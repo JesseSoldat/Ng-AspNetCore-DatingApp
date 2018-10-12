@@ -11,6 +11,8 @@ import { AlertifyService } from "../_services/alertify.service";
 export class NavComponent implements OnInit {
   model: any = {};
   uniqueName: string;
+  // Navbar
+  isCollapsed = true;
 
   constructor(
     private authService: AuthService,
@@ -37,7 +39,10 @@ export class NavComponent implements OnInit {
     return !!token;
   }
 
-  logout() {
+  logout($event) {
+    console.log("logout", $event);
+
+    $event.preventDefault();
     localStorage.removeItem("token");
     this.alertify.message("logged out");
   }
