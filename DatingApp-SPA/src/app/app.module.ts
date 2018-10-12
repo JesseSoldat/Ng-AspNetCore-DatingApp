@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 // Services
 import { AuthService } from "./_services/auth.service";
+import { AlertifyService } from "./_services/alertify.service";
 import { ErrorInterceptorProvider } from "./_services/error.interceptor";
 // Components
 import { AppComponent } from "./app.component";
@@ -14,7 +15,7 @@ import { RegisterComponent } from "./register/register.component";
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule],
-  providers: [AuthService, ErrorInterceptorProvider],
+  providers: [AuthService, AlertifyService, ErrorInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
