@@ -10,13 +10,16 @@ import { AlertifyService } from "../_services/alertify.service";
 })
 export class NavComponent implements OnInit {
   model: any = {};
+  uniqueName: string;
 
   constructor(
     private authService: AuthService,
     private alertify: AlertifyService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.uniqueName = this.authService.getUniqueName();
+  }
 
   login() {
     this.authService.login(this.model).subscribe(

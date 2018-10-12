@@ -16,7 +16,22 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService
-  ) {}
+  ) {
+    this.checkAuthToken();
+  }
+
+  checkAuthToken() {
+    const token = this.localStorageService.getItem("token");
+    this.decodedToken = this.jwtHelper.decodeToken(token);
+    console.log("Decoded Auth Token:", this.decodedToken);
+  }
+
+  getUniqueName() {
+    if (this.decodedToken) {
+      return this.decodedToken.unique_name;
+    }
+    return "User";
+  }
 
   login(model: any) {
     return this.http.post(this.baseUrl + "login", model).pipe(
@@ -25,7 +40,6 @@ export class AuthService {
         if (user) {
           this.localStorageService.setItem("token", user.token);
           this.decodedToken = this.jwtHelper.decodeToken(user.token);
-          console.log(this.decodedToken);
         }
       })
     );
@@ -37,6 +51,7 @@ export class AuthService {
 
   loggedIn() {
     const token = localStorage.getItem("token");
+    // token is NOT expired
     return !this.jwtHelper.isTokenExpired(token);
   }
 }
