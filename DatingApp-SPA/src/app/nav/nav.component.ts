@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 // Services
 import { AuthService } from "../_services/auth.service";
 import { AlertifyService } from "../_services/alertify.service";
@@ -15,6 +16,7 @@ export class NavComponent implements OnInit {
   isCollapsed = true;
 
   constructor(
+    private router: Router,
     private authService: AuthService,
     private alertify: AlertifyService
   ) {}
@@ -27,6 +29,7 @@ export class NavComponent implements OnInit {
     this.authService.login(this.model).subscribe(
       next => {
         this.alertify.success("Logged in successfully");
+        this.router.navigate(["/members"]);
       },
       err => {
         this.alertify.error(err);
@@ -39,11 +42,9 @@ export class NavComponent implements OnInit {
     return !!token;
   }
 
-  logout($event) {
-    console.log("logout", $event);
-
-    $event.preventDefault();
+  logout() {
     localStorage.removeItem("token");
     this.alertify.message("logged out");
+    this.router.navigate(["/home"]);
   }
 }
