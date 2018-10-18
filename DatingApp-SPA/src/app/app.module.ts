@@ -18,9 +18,11 @@ import { AppComponent } from "./app.component";
 import { NavComponent } from "./nav/nav.component";
 import { HomeComponent } from "./home/home.component";
 import { RegisterComponent } from "./register/register.component";
-import { MemberListComponent } from "./member-list/member-list.component";
+import { MemberListComponent } from "./members/member-list/member-list.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { ListsComponent } from "./lists/lists.component";
+import { MemberCardComponent } from "./members/member-card/member-card.component";
+import { UserService } from "./_services/user.service";
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { ListsComponent } from "./lists/lists.component";
     HomeComponent,
     RegisterComponent,
     MemberListComponent,
+    MemberCardComponent,
     MessagesComponent,
     ListsComponent
   ],
@@ -42,6 +45,7 @@ import { ListsComponent } from "./lists/lists.component";
   ],
   providers: [
     AuthService,
+    UserService,
     AlertifyService,
     ErrorInterceptorProvider,
     LocalStorageService,
