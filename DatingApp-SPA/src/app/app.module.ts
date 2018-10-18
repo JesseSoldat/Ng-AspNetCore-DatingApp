@@ -4,6 +4,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 // 3rd Party
+import { JwtModule } from "@auth0/angular-jwt";
 import { BsDropdownModule } from "ngx-bootstrap";
 import { CollapseModule } from "ngx-bootstrap";
 // Services
@@ -24,6 +25,15 @@ import { ListsComponent } from "./lists/lists.component";
 import { MemberCardComponent } from "./members/member-card/member-card.component";
 import { UserService } from "./_services/user.service";
 
+export function tokenGetter() {
+  try {
+    return localStorage.getItem("token");
+  } catch (err) {
+    console.log("localStorage is not available can not add token");
+    return null;
+  }
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +51,14 @@ import { UserService } from "./_services/user.service";
     FormsModule,
     RouterModule.forRoot(appRoutes),
     BsDropdownModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:5000"],
+        blacklistedRoutes: ["localhost:5000/api/auth"]
+      }
+    })
   ],
   providers: [
     AuthService,
