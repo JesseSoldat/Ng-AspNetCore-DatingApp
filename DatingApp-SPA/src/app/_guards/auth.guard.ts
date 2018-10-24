@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     }
 
     this.alertify.error("You are not authorized here");
-    this.router.navigate(["/"]);
+    this.router.navigate(["/home"]);
     return false;
   }
 }
