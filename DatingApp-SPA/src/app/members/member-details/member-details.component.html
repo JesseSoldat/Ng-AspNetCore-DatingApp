@@ -38,7 +38,7 @@
       <div class="tab-panel">
         <tabset class="member-tabset">
           <tab heading="About {{user.knownAs}}">
-            <div class="">
+            <div>
               <h4>Description</h4>
               <p>{{user.introduction}}</p>
               <h4>Looking For</h4>
@@ -51,7 +51,7 @@
             <p>{{user.interests}}</p>
           </tab>
           <tab heading="Photos">
-
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>
           <tab heading="Messages">
             <p>Messages will go here</p>
