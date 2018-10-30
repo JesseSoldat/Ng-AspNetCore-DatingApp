@@ -10,11 +10,14 @@ Microsoft.EntityFrameworkCore.Sqlite
 AutoMapper.Extensions.Microsoft.DependencyInjection
 4.0.1
 
+---- install cloudianary ----
+cloudinarydotnet
 ----- Migrations -----
 #1
 dotnet ef migrations add InitialCreate
 dotnet ef migrations add AddedUserEntity
 dotnet ef migrations add ExtendedUserClass
+dotnet ef migrations add UpdatePhoto
 #2 Apply migration
 dotnet ef database update
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NgForm } from "@angular/forms";
 // models
@@ -31,5 +31,17 @@ export class MemberEditComponent implements OnInit {
     });
   }
 
-  updateUser() {}
+  updateUser() {
+    this.userService
+      .updateUser(this.authService.decodedToken.nameid, this.user)
+      .subscribe(
+        next => {
+          this.alertify.success("Profile updated successfully");
+          this.editForm.reset(this.user);
+        },
+        error => {
+          this.alertify.error(error);
+        }
+      );
+  }
 }
