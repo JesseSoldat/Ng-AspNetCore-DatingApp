@@ -2,3 +2,6 @@
 bin
 obj
 *.db
+
+DatingApp.Api/appsettings.json
+/appsettings.json
