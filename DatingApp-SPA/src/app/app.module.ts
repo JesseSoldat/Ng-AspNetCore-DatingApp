@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { JwtModule } from "@auth0/angular-jwt";
 import { BsDropdownModule, CollapseModule, TabsModule } from "ngx-bootstrap";
 import { NgxGalleryModule } from "ngx-gallery";
+import { FileUploadModule } from "ng2-file-upload";
 // services
 import { AuthService } from "./_services/auth.service";
 import { UserService } from "./_services/user.service";
@@ -32,6 +33,7 @@ import { ListsComponent } from "./lists/lists.component";
 import { MemberCardComponent } from "./members/member-card/member-card.component";
 import { MemberDetailsComponent } from "./members/member-details/member-details.component";
 import { MemberEditComponent } from "./members/member-edit/member-edit.component";
+import { PhotoEditorComponent } from "./members/photo-editor/photo-editor.component";
 
 export function tokenGetter() {
   try {
@@ -53,7 +55,8 @@ export function tokenGetter() {
     MemberDetailsComponent,
     MessagesComponent,
     ListsComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ export function tokenGetter() {
     CollapseModule.forRoot(),
     TabsModule.forRoot(),
     NgxGalleryModule,
+    FileUploadModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
