@@ -9,6 +9,7 @@ namespace DatingApp.API.Data
   public class DatingRepository : IDatingRepository
   {
     private readonly DataContext _context;
+
     public DatingRepository(DataContext context)
     {
       _context = context;
