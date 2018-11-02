@@ -2,3 +2,8 @@
 .dropdown-item {
   cursor: pointer;
 }
+
+img {
+  max-height: 30px;
+  display: inline;
+}

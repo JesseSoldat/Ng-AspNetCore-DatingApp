@@ -34,6 +34,10 @@
 
 
       <div *ngIf="loggedIn()" class="dropdown mr-2 d-none d-md-inline" dropdown>
+        <span class="mr-1">
+          <img src="{{photoUrl}}" alt="">
+        </span>
+
         <a class="dropdown-toggle text-light" dropdownToggle>
           Welcome {{uniqueName | titlecase}}
         </a>
