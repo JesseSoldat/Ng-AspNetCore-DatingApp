@@ -17,6 +17,7 @@ export class PhotoEditorComponent implements OnInit {
   @Input()
   photos: Photo[];
   baseUrl = environment.apiUrl;
+  currentMain: Photo;
   // upload
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
@@ -64,5 +65,15 @@ export class PhotoEditorComponent implements OnInit {
         this.photos.push(photo);
       }
     };
+  }
+
+  setMainPhoto(photo: Photo) {
+    this.userService
+      .setMainPhoto(this.authService.decodedToken.nameid, photo.id)
+      .subscribe(() => {
+        this.currentMain = this.photos.filter(p => p.isMain === true)[0];
+        this.currentMain.isMain = false;
+        photo.isMain = true;
+      });
   }
 }
